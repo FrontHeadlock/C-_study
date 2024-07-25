@@ -20,14 +20,57 @@ inputData = int(input('오늘의 할인율을 입력하세요.'))
 getDiscountPrice = getDiscountPrice(inputData)
 
 printPrice(getDiscountPrice)
-print('-----------------------------------')'''
+print('-----------------------------------')
 
-import calculator
+import calculator as ca
 
-calculator.addition(1,2)
-calculator.substraction(1,2)
-calculator.multiplication(1,2)
-calculator.division(1,2)
-calculator.rest(1,2)
-calculator.portion(1,2)
+ca.addition(1,2)
+ca.substraction(1,2)
+ca.multiplication(1,2)
+ca.division(1,2)
+ca.rest(1,2)
+ca.portion(1,2)
 
+
+import circleMod as c
+
+print('원 둘레: ', c.getCircleLength(6))
+print('원 넓이: ', c.getCircleArea(6))
+
+file = open('/Users/kyumin/Desktop/백준_1/JOON/test19.txt','r')
+result = file.read()
+print('result : ',result)
+sum = result +1
+print('sum: ',sum)
+file.close()'''
+
+from time import strftime,localtime
+
+def getDay():
+    return strftime("%Y-%m-%d",localtime())
+
+def getTime():
+    return strftime('%H:%M:%S',localtime())
+
+print('*************** 한 줄 일기 ***************')
+
+dFlag = True
+while dFlag:
+    print('\n다음 항목을 선택하세요.')
+    selectItem = int(input('1.일기 작성 \t2.일기 보기\t3.종료'))
+
+    if selectItem ==1:
+        print('\n['+getDay()+']한 줄 일기를 작성하세요.')
+        todayDiary = input()
+
+        with open('diary.txt','a')as f:
+            f.write('['+getDay()+' '+getTime()+'] ')
+            f.write(todayDiary+'\n')
+
+    elif selectItem ==2:
+        with open('diary.txt','r')as f:
+            str = f.read()
+            print(str)
+    elif selectItem ==3:
+        print('\nBye~~')
+        dFlag = False
